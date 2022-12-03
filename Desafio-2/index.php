@@ -8,14 +8,14 @@
 </head>
 <body>
 
-    <h1>Números pares</h1>
+    <h1>Números ímpares</h1>
     
 
 <?php
 
 
 for ($i=0; $i <= 100; $i++) { 
-    if ($i % 2 == 0) {
+    if ($i % 2 != 0) {
         echo "$i <br>";
     }
 }
