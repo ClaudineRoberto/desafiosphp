@@ -34,7 +34,7 @@ $listaFornecedores = [
 for ($i=0; $i < count($listaFornecedores); $i++) { 
     fwrite($arquivo, $listaFornecedores[$i]["name"] . "\t");
     fwrite($arquivo, $listaFornecedores[$i]["email"] . "\t");
-    fwrite($arquivo, $listaFornecedores[$i]["country"] . "\n");
+    fwrite($arquivo, $listaFornecedores[$i]["country"] . "\n\n");
 }
 
 

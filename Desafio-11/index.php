@@ -2,8 +2,6 @@
 
 $arquivo = fopen("contatos.txt", "w");
 
-$arquivo = fopen("contatos.txt", "w");
-
 $data = [
 	[
 		"name" => "Zoe Burnett",
