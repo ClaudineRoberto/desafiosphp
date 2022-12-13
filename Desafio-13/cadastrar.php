@@ -12,15 +12,10 @@
     $nome = $_POST["nome"];
     $email = $_POST["email"];
     $dados = "";
-    
-    if(file_exists("estudantes.txt")){
-        $dados = "\n$nome \t$email";
-    }else{
-        $dados = "$nome \t$email";
-    }
+    $dados = [$nome,$email];
+    $arquivo = fopen("estudantes.csv","a+");
 
-    $arquivo = fopen("estudantes.txt","a+");
-    fwrite($arquivo, $dados);
+    fputcsv($arquivo, $dados, ";");
     fclose($arquivo);
     /*
     $arquivo = fopen("estudantes.txt","r");
@@ -40,17 +35,19 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Nome - E-mail</th>
+                            <th>Nome</th>
+                            <th>E-mail</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $arquivo = fopen("estudantes.txt","r");
-                        while(!feof($arquivo)){
-                            $linha = fgets($arquivo, 100);
-                            echo "<tr>";
-                            echo "<td>$linha</td>";
-                            echo "</tr>";
+                        $arquivo = fopen("estudantes.csv","r");
+                        while(($dados = fgetcsv($arquivo, 100, ";"))!= FALSE){
+                           echo "<tr>";
+                           foreach($dados as $campo){
+                            echo "<td>$campo</td>";
+                           }
+                           echo "</tr>";
                         }
                         fclose($arquivo);
                         ?>
